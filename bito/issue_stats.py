@@ -19,7 +19,7 @@ team_testing = ["Sai Yu", "Li Xu", "wen li", "Ruiyuan Tian"]
 team_web = [u"Haibo Jiang", "dandan jiang", u"Na Zhang", u"Jie Wang"]
 team_product = ["lei huang", u"Yan Zhang"]
 team_project = ["zuwu jiang", u"Zhenlin Zhang", u"He Chen", u"Fengru Xie", u"libao hu"]
-others = [u"Dingjiang Zhou", "Nick Faughey", "", "Ariana Keeling", "shengnan ji", "kai tang", "Kang Lu", "Michael Wiznitzer", u"Wenhao Dong", "Yue Dong", "peifeng wang", "Redmine Admin", "Puneet Singhal"]
+others = [u"Dingjiang Zhou", "Nick Faughey", "", "Ariana Keeling", "shengnan ji", "kai tang", "Kang Lu", "Michael Wiznitzer", u"Wenhao Dong", "Yue Dong", "peifeng wang", "Redmine Admin", "Puneet Singhal", "Anirudh Topiwala"]
 bito = [team_motion,team_web,team_iot,team_cc,team_testing,team_slam]
 
 d = {"motion":team_motion,
@@ -95,8 +95,21 @@ with open('total_stats_'+str(today)+'.csv','w') as f7:
 	f7.write("Created on " + str(today) + '\n')
 	f7.write("This file shows the total stats for for all groups" + '\n')
 	f7.write("Department"+','+"Passdue Numbers"+','+"Nodeadline Numbers"+'\n')
-	for item in d1:
+	for item in set(p.values()):
 		try:
+			print str(d1[item]),str(d2[item])
 			f7.write(item+','+str(d1[item])+','+str(d2[item])+'\n')
 		except:
-			f7.write(item+','+str(d1[item])+','+str(0)+'\n')
+			try:
+				print str(d1[item])
+				f7.write(item+','+str(d1[item])+','+str(0)+'\n')
+			except:
+				try:
+					print str(d2[item])
+					f7.write(item+','+str(0)+','+str(d2[item])+'\n')
+				except:
+					f7.write(item+','+str(0)+','+str(0)+'\n')
+		'''try:
+			f7.write(item+','+str(d1[item])+','+str(d2[item])+'\n')
+		except:
+			f7.write(item+','+str(d1[item])+','+str(0)+'\n')'''
